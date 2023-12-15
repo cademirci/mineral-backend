@@ -57,3 +57,4 @@ def predict():
         predicted_class_name = [k for k, v in class_indices.items() if v == predicted_class_index][0]
         return predicted_class_name
 
+
