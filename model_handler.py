@@ -12,25 +12,15 @@ def loadModel():
     return model
 
 def trainData():
-    train=ImageDataGenerator(rescale=1./255, # piksel değerleri 0-255'den 0-1 arasına getiriliyor.
-        rotation_range=40, # istenilen artırma işlemleri yapılabilir.
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        shear_range=0.2,
-        zoom_range=0.2,
-        horizontal_flip=True,
-        fill_mode='nearest')
+    train=ImageDataGenerator()
                                 
-    train_dataset=train.flow_from_directory('M_app/dataset/train',
-    target_size=(224,224),
-    batch_size=20,
-    class_mode='categorical')
+    train_dataset=train.flow_from_directory('M_app/dataset/train')
 
     return train_dataset
  
 def preprocess():
     # 'dataset/input' klasöründeki tüm dosya yollarını al
-    image_folder = 'M_app/dataset/input'
+    image_folder = 'uploads'
     image_paths = [os.path.join(image_folder, img) for img in os.listdir(image_folder)]
 
     # Giriş verilerini oluştur
